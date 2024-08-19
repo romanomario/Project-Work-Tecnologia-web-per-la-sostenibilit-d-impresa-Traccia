@@ -260,7 +260,6 @@ header div.menu.menu-desktop {
 .cd-horizontal-timeline .events-content {
     position: relative;
     width: 100%;
-    margin: 2em 0;
     overflow: hidden;
     height: auto;
     -webkit-transition: height 0.4s;
@@ -367,8 +366,6 @@ header div.menu.menu-desktop {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    height: auto;
-    padding: 0 5%;
 }
 
 .cd-horizontal-timeline .events-content .card-image {
@@ -426,18 +423,18 @@ header div.menu.menu-desktop {
     .cd-horizontal-timeline .events-content .card-content {
         display: -webkit-box;
         display: -ms-flexbox;
-        display: flex;
+        /*display: flex;*/
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
         -ms-flex-direction: row;
         flex-direction: row;
         -ms-flex-item-align: center;
-        align-self: center;
+        /*align-self: center;*/
         -ms-flex-pack: distribute;
         justify-content: space-around;
         height: 100%;
         margin-top: -1.5rem;
-        max-width: 75vw;
+        /*max-width: 75vw;*/
     }
 
     .cd-horizontal-timeline .events-content .card-image {
@@ -461,11 +458,8 @@ header div.menu.menu-desktop {
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
         flex-direction: column;
-        max-width: 450px;
         -ms-flex-item-align: center;
         align-self: center;
-        height: 415px;
-        margin-left: 2rem;
     }
 
     .cd-horizontal-timeline .events-content .card-title {
@@ -601,26 +595,34 @@ li.selected {
     background-repeat: no-repeat;
 }
 
-li.selected .card-image img{
-    border-radius: 20px;
+.events-content .card-downloads{
+    margin: 2rem !important;
 }
 
 .events-content .card-downloads div.card-file{
-    background-color: #a7a7a7;
+    background-color: #ebebeb;
+    padding: 2rem 2rem;
     border-radius: 10px;
-    padding: 1rem 2rem;
     margin-bottom: 1rem;
-}
-
-.card-downloads {
-    overflow: scroll;
 }
 
 .cd-horizontal-timeline .events-content li div.card-file a {
     font-size: 15px;
     display: inline;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .cd-horizontal-timeline .events-content li div.card-file i {
     padding-right: 1rem;
+    font-size: 30px;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.card-info {
+    width: 100%;
 }
