@@ -61,10 +61,15 @@ header div.menu.menu-desktop {
 .cd-horizontal-timeline .events-wrapper {
     position: relative;
     height: 100%;
-    /*margin: 0 40px;*/
-    overflow-x: scroll;
-    overflow-y: hidden;
+    overflow-x: scroll; /* Permette lo scroll orizzontale */
+    scrollbar-width: none; /* Nasconde la scrollbar in Firefox */
+    -ms-overflow-style: none; /* Nasconde la scrollbar in Internet Explorer e Edge */
 }
+
+.cd-horizontal-timeline.events-wrapper::-webkit-scrollbar {
+    display: none; /* Nasconde la scrollbar in Chrome, Safari, e Opera */
+}
+
 
 .cd-horizontal-timeline .events {
     /* this is the line of the timeline */

@@ -267,3 +267,74 @@ jQuery(document).ready(function($){
     }
 
 });
+
+// Esegui il codice quando il DOM è completamente caricato
+document.addEventListener("DOMContentLoaded", function() {
+    // Seleziona il contenitore degli eventi e tutti i link al suo interno
+    const eventsWrapper = document.querySelector('.events-wrapper');
+    const links = document.querySelectorAll('.events ul li a');
+
+    // Aggiungi un evento di click a ciascun link
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Previeni il comportamento predefinito del link (navigazione)
+
+            // Ottieni la posizione orizzontale del link rispetto alla finestra (viewport)
+            const linkPosition = link.getBoundingClientRect().left;
+            // Ottieni le dimensioni e la posizione del contenitore visibile (eventsWrapper)
+            const wrapperRect = eventsWrapper.getBoundingClientRect();
+            const wrapperWidth = wrapperRect.width; // Larghezza visibile del wrapper
+
+            let targetScrollLeft; // Variabile per la posizione di scroll desiderata
+
+            // Controlla se il link si trova nella parte destra dello schermo (oltre i 3/4 della larghezza del wrapper)
+            if (linkPosition > wrapperRect.left + (wrapperWidth * 3/4)) {
+                // Se sì, calcola la nuova posizione di scroll per andare a destra
+                targetScrollLeft = eventsWrapper.scrollLeft + wrapperWidth / 2;
+            }
+            // Controlla se il link si trova nella parte sinistra dello schermo (prima di 1/4 della larghezza del wrapper)
+            else if (linkPosition < wrapperRect.left + (wrapperWidth * 1/4)) {
+                // Se sì, calcola la nuova posizione di scroll per andare a sinistra
+                targetScrollLeft = eventsWrapper.scrollLeft - wrapperWidth / 2;
+            }
+
+            // Se è stata calcolata una nuova posizione di scroll (targetScrollLeft), esegui lo scroll animato
+            if (targetScrollLeft !== undefined) {
+                smoothScroll(eventsWrapper, targetScrollLeft, 600); // Esegui uno scroll in 600ms
+            }
+        });
+    });
+
+    // Funzione per eseguire uno scroll animato
+    function smoothScroll(element, target, duration) {
+        const start = element.scrollLeft; // Posizione iniziale dello scroll
+        const change = target - start; // Differenza tra la posizione di partenza e quella di arrivo
+        const startTime = performance.now(); // Tempo di inizio dell'animazione
+
+        // Funzione per animare lo scroll
+        function animateScroll(currentTime) {
+            const timeElapsed = currentTime - startTime; // Tempo trascorso dall'inizio dell'animazione
+            const progress = Math.min(timeElapsed / duration, 1); // Progresso dell'animazione (0 a 1)
+
+            // Calcola la nuova posizione dello scroll usando una funzione di easing (per un'animazione più fluida)
+            element.scrollLeft = start + change * easeInOutQuad(progress);
+
+            // Continua l'animazione finché il tempo trascorso è inferiore alla durata
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animateScroll); // Richiedi il prossimo frame di animazione
+            }
+        }
+
+        // Funzione di easing per rendere l'animazione più naturale (inizio e fine più morbidi)
+        function easeInOutQuad(t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        }
+
+        // Avvia l'animazione
+        requestAnimationFrame(animateScroll);
+    }
+});
+
+
+
+
