@@ -25,9 +25,10 @@ header div.menu a:hover {
     text-decoration: none;
 }
 
-header div.menu.menu-desktop {
+header div.menu.menu-desktop .menu-section{
     background-color: #f5f5f5;
     border-radius: 10px;
+    padding: 10px;
 }
 
 /* code of codepen */
@@ -631,3 +632,10 @@ li.selected {
 .card-info {
     width: 100%;
 }
+
+@media (max-width: 480px) {
+    header div.top-bar {
+        height: 4rem;
+    }
+}
+
