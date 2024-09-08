@@ -335,6 +335,69 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+jQuery(document).ready(function($) {
+    // Funzione per verificare se è un dispositivo mobile
+    function isMobile() {
+        return window.innerWidth <= 480;
+    }
+
+    // Se è mobile, avvia la logica per la select
+    if (isMobile()) {
+        initMobileTimeline();
+
+        // Trova l'anno più recente nella select
+        var latestYearOption = getLatestYear();
+        if (latestYearOption) {
+            updateMobileContent(latestYearOption);
+        }
+    }
+
+    // Inizializza la logica della select per la timeline mobile
+    function initMobileTimeline() {
+        $('#select_year_timeline_mobile').on('change', function() {
+            var selectedYear = $(this).find(':selected').data('date');
+            if (selectedYear) {
+                updateMobileContent(selectedYear);
+            }
+        });
+    }
+
+    // Trova l'anno più recente
+    function getLatestYear() {
+        var options = $('#select_year_timeline_mobile option[data-date]');
+        var latestDate = null;
+
+        options.each(function() {
+            var dateValue = $(this).data('date');
+            var currentDate = new Date(dateValue);
+
+            if (!latestDate || currentDate > latestDate) {
+                latestDate = dateValue;
+            }
+        });
+
+        return latestDate;
+    }
+
+    // Aggiorna il contenuto per la versione mobile
+    function updateMobileContent(selectedDate) {
+        var eventsContent = $('.events-content'),
+            visibleContent = eventsContent.find('.selected'),
+            selectedContent = eventsContent.find(`[data-date="${selectedDate}"]`);
+
+        if (selectedContent.length) {
+            var selectedContentHeight = selectedContent.height();
+
+            // Nascondi il contenuto corrente e mostra il nuovo contenuto selezionato
+            visibleContent.removeClass('selected');
+            selectedContent.addClass('selected');
+
+            // Aggiorna l'altezza del contenitore per evitare salti
+            eventsContent.css('height', selectedContentHeight + 'px');
+        }
+    }
+});
+
 
 
 
