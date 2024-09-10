@@ -1,4 +1,3 @@
-/* Stile personalizzato */
 body {
     overflow-x: hidden;
 }
@@ -7,7 +6,7 @@ header div.top-bar {
     background-color: #45c14e;
     height: 2rem;
     display: flex;
-    align-items: center; /* Centra verticalmente il contenuto */
+    align-items: center;
 }
 
 header div.top-bar p {
@@ -32,25 +31,20 @@ header div.menu.menu-desktop .menu-section {
     padding: 10px;
 }
 
-/* code of codepen */
-
 .cd-horizontal-timeline {
     opacity: 0;
     margin: 2em auto;
     -webkit-transition: opacity 0.2s;
     -moz-transition: opacity 0.2s;
     transition: opacity 0.2s;
-    /* this code sets the colors for each dot using $idt-dark-blue as the default */
 }
 
 .cd-horizontal-timeline::before {
-    /* never visible - this is used in jQuery to check the current MQ */
     content: 'mobile';
     display: none;
 }
 
 .cd-horizontal-timeline.loaded {
-    /* show the timeline after events position has been set (using JavaScript) */
     opacity: 1;
 }
 
@@ -63,24 +57,22 @@ header div.menu.menu-desktop .menu-section {
 .cd-horizontal-timeline .events-wrapper {
     position: relative;
     height: 100%;
-    overflow-x: scroll; /* Permette lo scroll orizzontale */
-    scrollbar-width: none; /* Nasconde la scrollbar in Firefox */
-    -ms-overflow-style: none; /* Nasconde la scrollbar in Internet Explorer e Edge */
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .cd-horizontal-timeline.events-wrapper::-webkit-scrollbar {
-    display: none; /* Nasconde la scrollbar in Chrome, Safari, e Opera */
+    display: none;
 }
 
 
 .cd-horizontal-timeline .events {
-    /* this is the line of the timeline */
     position: absolute;
     z-index: 1;
     left: 0;
     top: 49px;
     height: 2px;
-    /* width is set using JavaScript */
     background: #c9c9c9;
     -webkit-transition: -webkit-transform 0.4s;
     -moz-transition: -moz-transform 0.4s;
@@ -88,7 +80,6 @@ header div.menu.menu-desktop .menu-section {
 }
 
 .cd-horizontal-timeline .filling-line {
-    /* this is used to create the colored line ($idt-dark-blue) filling the timeline */
     position: absolute;
     z-index: 1;
     left: 0;
@@ -111,7 +102,6 @@ header div.menu.menu-desktop .menu-section {
     transition: transform 0.3s;
 }
 
-/* todo @mairo cambiare il colore in grigio */
 .cd-horizontal-timeline div.timeline div.events li > a::after {
     background-color: #ffffff;
     border-color: #ffffff;
@@ -125,10 +115,8 @@ header div.menu.menu-desktop .menu-section {
     z-index: 2;
     text-align: center;
     font-size: 2rem;
-    /* padding-bottom: 15px; */
     top: 32px;
     color: #2D2D2D;
-    /* fix bug on Safari - text flickering while timeline translates */
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
@@ -137,7 +125,6 @@ header div.menu.menu-desktop .menu-section {
 }
 
 .cd-horizontal-timeline .events a::after {
-    /* this is used to create the event spot */
     content: '';
     position: absolute;
     left: 50%;
@@ -184,7 +171,6 @@ header div.menu.menu-desktop .menu-section {
 }
 
 .cd-timeline-navigation a {
-    /* these are the left/right arrows to navigate the timeline */
     position: absolute;
     z-index: 1;
     top: 50%;
@@ -207,7 +193,6 @@ header div.menu.menu-desktop .menu-section {
 }
 
 .cd-timeline-navigation a::after {
-    /* arrow icon */
     content: '';
     position: absolute;
     height: 34px;
@@ -303,7 +288,6 @@ header div.menu.menu-desktop .menu-section {
 }
 
 .cd-horizontal-timeline .events-content li.selected {
-    /* visible event content */
     position: relative;
     z-index: 2;
     opacity: 1;
@@ -377,7 +361,6 @@ header div.menu.menu-desktop .menu-section {
 
 .cd-horizontal-timeline .events-content .card-image {
     width: 100%;
-    /* height: 415px; */
     margin-bottom: 2rem;
 }
 
@@ -430,24 +413,19 @@ header div.menu.menu-desktop .menu-section {
     .cd-horizontal-timeline .events-content .card-content {
         display: -webkit-box;
         display: -ms-flexbox;
-        /*display: flex;*/
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
         -ms-flex-direction: row;
         flex-direction: row;
         -ms-flex-item-align: center;
-        /*align-self: center;*/
         -ms-flex-pack: distribute;
         justify-content: space-around;
         height: 100%;
         margin-top: -1.5rem;
-        /*max-width: 75vw;*/
     }
 
     .cd-horizontal-timeline .events-content .card-image {
         max-height: 75vh;
-        /* width: 585px; */
-        /* height: 415px; */
         -ms-flex-item-align: center;
         align-self: center;
         margin-right: 2rem;
@@ -582,14 +560,14 @@ section.cd-horizontal-timeline li {
 section.cd-horizontal-timeline li a {
     display: inline-block;
     text-decoration: none;
-    font-size: 2rem; /* Dimensione di base del font */
-    transition: all 0.3s ease-in-out; /* Effetto di transizione per tutti i cambiamenti */
+    font-size: 2rem;
+    transition: all 0.3s ease-in-out;
 }
 
 section.cd-horizontal-timeline li > a:hover {
     text-decoration: none;
-    font-size: 2.3rem; /* Nuova dimensione del font */
-    transform: scale(1.1); /* Ingrandisce l'elemento */
+    font-size: 2.3rem;
+    transform: scale(1.1);
 }
 
 .events-content ul {
@@ -634,27 +612,23 @@ li.selected {
     width: 100%;
 }
 
-/* DESKTOP E TABLET */
 @media (min-width: 480px) {
     .container_select_year_timeline_mobile {
         display: none;
     }
 }
 
-/* MOBILE */
 @media (max-width: 480px) {
-    /* aumentiamo l'altezza */
     header div.top-bar {
         height: 4rem;
     }
 
-    /* nascondiamo la timeline da mobile */
     .cd-horizontal-timeline .timeline {
         display: none;
     }
 
     .container_select_year_timeline_mobile {
-        text-align: center; /* centriamo tutto */
+        text-align: center;
     }
 
     .container_select_year_timeline_mobile select#select_year_timeline_mobile {
